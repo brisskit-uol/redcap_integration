@@ -1,0 +1,19 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)"
+brisskit_id,brisskit_admin_fcac,,text,"Brisskit ID number",,"Should be automatically filled in",number,,,,,,,
+pregnant,samplepreliminary,,radio,"Are you pregnant?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+haemophillia,samplepreliminary,,radio,"Do you have a blood clotting disease such as haemophilia?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+blood_transfusion,samplepreliminary,,radio,"Have you received a blood transfusion in the past three months?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+radiotherapy,samplepreliminary,,radio,"Have you received radiotherapy or chemotherapy treatment in the past twelve weeks?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+food_lasteat,samplepreliminary,,text,"When was the last time you had something to eat?
+",,,datetime_ymd,,,,,,,
+food_lastdrink,samplepreliminary,,text,"When was the last time you had anything to drink other than plain water?
+",,,datetime_ymd,,,,,,,
+medical_history_section_heading,medicalhistory,,descriptive,"Medical History Recorded via Medical Notes",,,,,,,,,,
+hypertension,medicalhistory,,radio,"Is hypertension documented in the notes?","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+history_highbp_onset,medicalhistory,,sql,"Year of onset of high blood pressure?","SELECT * FROM years ORDER BY year DESC;",,,,,,"[hypertension] = '1'",,,
+diabetes,medicalhistory,,radio,"Is diabetes documented in the notes?","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+diabetes_type,medicalhistory,,radio,"Which type of diabetes?","1, Type_1 | 2, Type_2 | 3, Gestational_only | 9999, Unknown",,,,,,"[diabetes] = '1'",,,
+cholesterol,medicalhistory,,radio,"Is high cholesterol documented in the notes? ","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+cholesterol_onset_year,medicalhistory,,sql,"Year of onset of high cholesterol?","SELECT * FROM years ORDER BY year DESC;",,,,,,"[cholesterol] = '1'",,,
+mi,medicalhistory,,radio,"Is heart attack or myocardial infarction (M.I.) documented in the notes?","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+mi_number,medicalhistory,,text,"How many MIs have been documented?",,,integer,,,,"[mi] = '1'",,,

@@ -1,0 +1,38 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)"
+pid,secret_stuff,,text,pid,,,number,,,,,,,
+name,secret_stuff,,text,name,,,,,,y,,,,
+consent_acute,verbalconsent,"Acute verbal consent is to be sought from patients where they are willing to provide samples during the acute phase of a hospital admission but it is inappropriate to conduct the full written informed consent. Such consent must be witnessed by a healthcare professional or another member of the research team. Full informed consent must be obtained from the patient within 72 hours of Acute Verbal Consent.",yesno,"Was Acute Verbal Consent given by participant?",,,,,,,,y,,
+consent_witness_cat,verbalconsent,,text,"Name of Witness
+
+Enter the name of the independent witness who has signed the form to confirm the participant gave verbal consent.",,,,,,,"[consent_acute] = '1'",y,,
+consent_q1,manualconsent,,yesno,"Does the participant understand the request for consent?",,,,,,,,,,
+consent_q2,manualconsent,,yesno,"Does the participant consent to donate blood and urine?",,,,,,,,,,
+consent_q3,manualconsent,,yesno,"Does the participant consent to entry in the BRICCS database?
+",,,,,,,,,,
+consent_q4,manualconsent,,yesno,"Does the participant consent to possible further contact from BRU?",,,,,,,,,,
+consent_q5,manualconsent,,yesno,"Does the participant understand the rules for withdrawal?",,,,,,,,,,
+sample_preg,samplepreliminary,,radio,"Are you pregnant?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+sample_haem,samplepreliminary,,radio,"Do you have a blood clotting disease such as haemophilia?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+sample_tra24h,samplepreliminary,,radio,"Have you received a blood transfusion or donated blood in the past 24 hours?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+sample_tra3m,samplepreliminary,,radio,"Have you received a blood transfusion in the past three months?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+sample_onc,samplepreliminary,,radio,"Have you received radiotherapy or chemotherapy treatment in the past twelve weeks?","0, No | 1, Yes | 9998, Prefer not to answer | 9999, Don't know",,,,,,,,,
+food_lasteat_cat,samplepreliminary,,text,"When was the last time you had something to eat?
+Indicate the time you last ate, or choose 'more than 24 hours'.",,,datetime_ymd,,,,,,,
+food_lastdrink_cat,samplepreliminary,,text,"When was the last time you had anything to drink other than plain water?
+Indicate time, or choose 'more than 24 hours'.",,,datetime_ymd,,,,,,,
+food_lastcaff_cat,samplepreliminary,,text,"When was the last time you had anything to drink other than plain water?
+Indicate time, or choose 'more than 24 hours'.",,,datetime_ymd,,,,,,,
+medical_history_recorded_v,medicalhistory,,descriptive,"Medical History Recorded via Medical Notes",,,,,,,,,,
+history_highbp,medicalhistory,,radio,"Is hypertension documented in the notes?","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+history_highbp_onset,medicalhistory,,sql,"Year of onset of high blood pressure?","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_highbp] = '1'",,,
+history_diab,medicalhistory,,radio,"Is diabetes documented in the notes??","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+history_diab_type,medicalhistory,,radio,"Which type of diabetes?","1, Type_1 | 2, Type_2 | 3, Gestational_only | 9999, Unknown",,,,,,"[history_diab] = '1'",,,
+history_diab_onset_cab,medicalhistory,,sql,"Year of onset of diabetes?","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_diab] = '1'",,,
+history_chol,medicalhistory,,radio,"Is high cholesterol documented in the notes? ","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+history_chol_onset_cat,medicalhistory,,sql,"Year of onset of high cholesterol?","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_diab] = '1'",,,
+history_mi,medicalhistory,,radio,"Is heart attack or myocardial infarction (M.I.) documented in the notes?","0, No | 1, Yes | 9999, Unknown",,,,,,,,,
+history_mi_number_cat,medicalhistory,,text,"How many MIs have been documented?",,,integer,,,,"[history_mi] = '1'",,,
+history_mi_onset_1,medicalhistory,,sql,"Year of occurrence of first MI:","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_mi_number_cat] >= 1",,,
+history_mi_onset_2,medicalhistory,,sql,"Year of occurrence of second MI:","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_mi_number_cat] >= 2",,,
+history_mi_onset_3,medicalhistory,,sql,"Year of occurrence of third MI:","SELECT * FROM years ORDER BY year DESC;",,,,,,"[history_mi_number_cat] >= 3",,,
+plus_lost_more_that_i_have,medicalhistory,,descriptive,"Plus lost more that I haven't put in.",,,,,,,,,,
